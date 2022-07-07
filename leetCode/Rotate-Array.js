@@ -4,7 +4,6 @@ var rotate = function (nums, k) {
       nums.unshift(nums.pop());
     }
   } else {
-    numberOfSteps = arr = nums.splice(nums.length - k, k);
-    nums.unshift(...arr);
+    nums.unshift(...nums.splice(nums.length - k, k));
   }
 };
