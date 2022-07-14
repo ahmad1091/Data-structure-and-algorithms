@@ -17,8 +17,6 @@ var lengthOfLongestSubstring = function (s) {
       count = temp.length;
       lastOccur[s[i]] = i;
     } else {
-      console.log(s[i], temp);
-
       lastOccur[s[i]] = i;
       temp += s[i];
       count++;
