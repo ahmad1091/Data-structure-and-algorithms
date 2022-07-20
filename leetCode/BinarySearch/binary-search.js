@@ -1,19 +1,16 @@
 var search = function (nums, target) {
-  let index = -1;
   let start = 0;
-  let end = nums.length - 1;
-  let middle = Math.floor((end + start) / 2);
-
-  while (start <= end) {
+  let end = nums.length;
+  while (start < end) {
+    let middle = Math.floor((end + start) / 2);
     if (nums[middle] == target) return middle;
-    if (nums[middle] > target) {
-      end = middle - 1;
-      middle = Math.floor((end + start) / 2);
-    }
-    if (nums[middle] < target) {
+    if (target<nums[middle]) {
+      end = middle;
+    } else{
       start = middle + 1;
-      middle = Math.floor((end + start) / 2);
     }
   }
-  return index;
+  return -1;
 };
+
+console.log(search([1,2,3,4,5],4))
