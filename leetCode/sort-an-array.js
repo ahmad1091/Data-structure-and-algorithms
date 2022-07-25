@@ -14,16 +14,15 @@ var sortArray = function (nums) {
 // "Insertion Sort" The space complexity for the algorithm is O(1)
 // and the average time complexity is O(n²).
 var sortArray = function (nums) {
-    for (let i = 0; i < nums.length; i++) {
-       for (let j = i; j >= 0; j--) {
-        if (nums[j]>nums[j+1]) {
-            [nums[j+1],nums[j]]=[nums[j],nums[j+1]];
-        }
-
-       }
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i; j >= 0; j--) {
+      if (nums[j] > nums[j + 1]) {
+        [nums[j + 1], nums[j]] = [nums[j], nums[j + 1]];
+      }
     }
-    return nums;
-}
+  }
+  return nums;
+};
 
 // "Selection Sort" The space complexity for the algorithm is O(1)
 // and the average time complexity is O(n²).
@@ -41,5 +40,44 @@ var sortArray = function (nums) {
     }
   }
   return nums;
+};
+
+// "Merge Sort" The space complexity varies depending on the technique.
+// and the average time complexity is O(n * log n).
+var merge = function (arr1, arr2) {
+  let result = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[i] < arr2[j]) {
+      result.push(arr1[i]);
+      i++;
+    } else {
+      result.push(arr2[j]);
+      j++;
+    }
+  }
+
+  while (i < arr1.length) {
+    result.push(arr1[i]);
+    i++;
+  }
+
+  while (j < arr2.length) {
+    result.push(arr2[j]);
+    j++;
+  }
+  return result;
+};
+
+var sortArray = function (nums) {
+  if (nums.length <= 1) return nums;
+
+  let mid = Math.floor(nums.length / 2);
+  let left = sortArray(nums.slice(0, mid));
+  let right = sortArray(nums.slice(mid));
+
+  return merge(left, right);
 };
 console.log(sortArray([5, 2, 3, 1]));
