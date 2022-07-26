@@ -80,4 +80,31 @@ var sortArray = function (nums) {
 
   return merge(left, right);
 };
-console.log(sortArray([5, 2, 3, 1]));
+
+// "Quick Sort" The space complexity varies depending on the technique.
+// and the average time complexity is O(n * log n).
+var partition = function (arr, start = 0, end = arr.length - 1) {
+  let pivot = arr[start];
+  let pivotIdx = start;
+
+  for (let i = start+1; i <= end; i++) {
+    if (arr[i] < pivot) {
+      pivotIdx++;
+      [arr[i], arr[pivotIdx]] = [arr[pivotIdx], arr[i]];
+    }
+  }
+  [arr[pivotIdx], arr[start]] = [arr[start], arr[pivotIdx]];
+  return pivotIdx;
+};
+
+var sortArray = function (nums,left = 0 , right=nums.length-1) {
+
+    if (left<right) {
+        let pivotIndex = partition(nums,left,right);
+
+        sortArray(nums,left,pivotIndex-1);
+        sortArray(nums,pivotIndex+1,right);
+    }
+    return nums;
+}
+console.log(partition([5,3, 2, 1]));
