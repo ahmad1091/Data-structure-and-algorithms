@@ -13,7 +13,6 @@ var removeElement = function (nums, val) {
       i++;
     }
   }
-  console.log(nums);
 };
 
-removeElement([3,2,2,3], 2);
+removeElement([3, 2, 2, 3], 2);
