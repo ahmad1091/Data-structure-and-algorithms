@@ -8,5 +8,5 @@
 // Each child will eat 3 pieces. So the answer is 9.
 
 function solution(n, m) {
-    return m - m % n
+  return m - (m % n);
 }
