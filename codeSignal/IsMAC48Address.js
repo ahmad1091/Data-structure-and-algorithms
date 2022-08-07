@@ -31,4 +31,11 @@ function solution(inputString) {
   return true;
 }
 
+// using regex solution
+function solution(inputString) {
+    let arr = inputString.split("-");
+    return arr.length == 6 && arr.every((a) => /^[A-F0-9]{2}$/.test(a));
+  }
+  
+
 solution("00-1B-63-84-45-E6");
