@@ -6,16 +6,11 @@
 // brut force solution
 var strStr = function (haystack, needle) {
   for (let i = 0; i < haystack.length; i++) {
-    let match = true;
-    for (let j = 0; j < needle.length; j++) {
-      if (haystack[i + j] !== needle[j]) {
-        match = false;
-        break;
-      }
+    let j = 0
+    for (; j < needle.length; j++) {
+      if (haystack[i + j] !== needle[j]) break;
     }
-    if (match) {
-      return i;
-    }
+    if (j == needle.length) return i;
   }
   return -1;
 };
