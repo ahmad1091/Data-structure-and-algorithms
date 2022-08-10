@@ -20,4 +20,9 @@ var strStr = function (haystack, needle) {
   return -1;
 };
 
+// solution using JS built in methods
+
+var strStr = function (haystack, needle) {
+    return haystack.indexOf(needle)
+   };
 console.log(strStr("mississippi", "issip"));
