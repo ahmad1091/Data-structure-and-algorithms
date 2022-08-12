@@ -4,3 +4,16 @@
 // Example
 
 // For inputString = "crazy", the output should be solution(inputString) = "dsbaz".
+
+function solution(inputString) {
+  alphabet = "abcdefghijklmnopqrstuvwxyz";
+  outputString = "";
+  for (let index = 0; index < inputString.length; index++) {
+    i =
+      alphabet.indexOf(inputString[index]) == alphabet.length - 1
+        ? 0
+        : alphabet.indexOf(inputString[index]) + 1;
+    outputString += alphabet[i];
+  }
+  return outputString;
+}
