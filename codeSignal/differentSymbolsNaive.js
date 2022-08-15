@@ -7,3 +7,12 @@
 
 // There are 3 different characters a, b and c.
 
+function solution(s) {
+  arr = [];
+  for (e of s) {
+    if (arr.indexOf(e) < 0) {
+      arr.push(e);
+    }
+  }
+  return arr.length;
+}
