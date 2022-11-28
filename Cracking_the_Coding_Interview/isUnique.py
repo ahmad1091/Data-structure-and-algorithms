@@ -2,7 +2,7 @@
 # cannot use additional data structures?
 
 
-def isUniqueChars(str):
+def isUniqueChars(str): # Time complexity: O(n) Space complexity O(1)
     if len(str) > 128:
         return False
     
