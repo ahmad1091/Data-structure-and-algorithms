@@ -10,7 +10,6 @@ def isUniqueChars(str): # Time complexity: O(n) Space complexity O(1)
 
     for i in range(len(str)):
         val = ord(str[i])
-        print(str[i],'::',val,char_set[val])
         if char_set[val]:
             return False
         
