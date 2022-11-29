@@ -14,3 +14,25 @@ def rotate(matrix):
     for i in range(len(matrix)):
         for j in range(len(matrix)):
             matrix[i][j] = temp[i][j]
+
+
+# Solution 2.
+def rotate(matrix):
+    if (len(matrix) == 0 | len(matrix) != len(matrix[0])):
+        return false
+    n= len(matrix)
+    for layer in range(int(n/2)):
+        first = layer
+        last = n - 1 - layer
+
+        for i in range(first,last):
+            offset = i - first
+            top = matrix[first][i]
+            matrix[first][i] = matrix[last - offset][first]
+            matrix[last - offset][first] = matrix[last][last -offset]
+            matrix[last][last -offset] = matrix[i][last]
+            matrix[i][last] = top
+    print(matrix)
+    return True
+
+rotate([[1,2,3],[4,5,6],[7,8,9]])
