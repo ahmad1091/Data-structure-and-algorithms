@@ -32,7 +32,9 @@ def rotate(matrix):
             matrix[last - offset][first] = matrix[last][last -offset]
             matrix[last][last -offset] = matrix[i][last]
             matrix[i][last] = top
-    print(matrix)
     return True
 
-rotate([[1,2,3],[4,5,6],[7,8,9]])
+# rotate([[1,2,3],[4,5,6],[7,8,9]])
+a = [[0,0],[1,0]]
+a.sort()
+print(a)
