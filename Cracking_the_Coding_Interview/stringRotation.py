@@ -20,7 +20,7 @@ class Solution:
 def isRotation(s1,s2):
     length = len(s1)
     if length == len(s2) and length > 0:
-        return s1 in s1*2
+        return s2 in s1*2
     return False
 
 print(isRotation('waterbottle','erbottlewat'))
