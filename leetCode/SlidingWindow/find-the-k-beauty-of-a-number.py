@@ -12,3 +12,15 @@
 # 0 is not a divisor of any value.
 # A substring is a contiguous sequence of characters in a string.
 
+class Solution:
+    def divisorSubstrings(self, num: int, k: int) -> int:
+        
+        l, r =0, k-1
+        numStr = str(num)
+        count = 0
+        while(r< len(numStr)):
+            if((int(numStr[l:r+1])) != 0 and num % (int(numStr[l:r+1])) == 0):
+                count+=1
+            r += 1
+            l += 1
+        return count
