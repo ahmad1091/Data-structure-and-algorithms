@@ -5,7 +5,7 @@
 # A message is a string of uppercase letters, and it is encoded first using this scheme. For example, 'AZB' -> '1262'
 
 # Given a string of digits S from 0-9 representing an encoded message, return the number of ways to decode it.
-
+# Sol 1:
 def decodeVariations(S):
 	"""
 	@param S: str
@@ -27,3 +27,27 @@ def decodeVariations(S):
         return res 
         
     return dfs(0)
+
+# Sol 2:
+def decodeVariations(S):
+	"""
+	@param S: str
+	@return: int
+	"""
+def decodeVariations(S):
+	"""
+	@param S: str
+	@return: int
+	"""
+    dp = { len(s) : 1 }
+        
+    for i in range(len(s)-1 ,-1 ,-1):
+        if s[i] == '0':
+                dp[i] = 0
+        else:
+            dp[i] = dp[i+1]
+                
+        if i+1 < len(s) and (s[i] == '1' or s[i] == '2' and s[i+1] in '0123456'):
+            dp[i]+= dp[i+2]
+        
+    return dp[0]
