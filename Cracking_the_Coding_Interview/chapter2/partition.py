@@ -24,5 +24,41 @@ class Solution:
         
         return start
 
+# Solution 2: If we need to keep the elements stable
 
+
+class Solution:
+    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
+        beforeStart = None
+        beforeEnd = None
+        afterStart = None
+        afterEnd = None
+
+        while head:
+            next = head.next
+            head.next = None
+            if head.val < x:
+                if(beforeStart == None):
+                    beforeStart = head
+                    beforeEnd = beforeStart
+                else:
+                    beforeEnd.next = head
+                    beforeEnd = head
+            else:
+                if(afterStart == None):
+                    afterStart = head
+                    afterEnd = afterStart
+                else:
+                    afterEnd.next = head
+                    afterEnd = head
+            head = next
+
+        if(beforeStart == None):
+            return afterStart
+
+        beforeEnd.next = afterStart
+
+        return beforeStart
+
+        
 
