@@ -10,6 +10,7 @@
 #         self.val = val
 #         self.next = next
 
+# Solution 1:
 class Solution:
     def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
         beforeStart = None
@@ -43,4 +44,33 @@ class Solution:
         beforeEnd.next = afterStart
 
         return beforeStart
+
+# Solution 2: Same as the approach above but cleaner
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
+        left = ListNode()
+        right = ListNode()
+        leftTail = left
+        rightTail = right
+        
+        while head:
+            if head.val < x:
+                leftTail.next = head
+                leftTail = leftTail.next
+            else:
+                rightTail.next = head
+                rightTail = rightTail.next
+            head = head.next
+        leftTail.next = right.next
+        rightTail.next =None
+            
+        return left.next
+        
+  
           
