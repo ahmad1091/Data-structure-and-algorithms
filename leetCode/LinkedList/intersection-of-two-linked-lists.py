@@ -11,3 +11,34 @@
 
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        if headA == None 
+        count1 = 0
+        count2 = 0
+
+        temp1 = headA
+        temp2 = headB
+
+        while temp1.next:
+            count1 += 1
+            temp1 = temp1.next
+
+        while temp2.next:
+            count2 += 1
+            temp2 = temp2.next
+        
+        if(temp1 != temp2):
+            return None
+
+        fast = headA if count1 >= count2 else headB
+        slow = headA if count1 < count2 else headB
+        n = abs(count1 - count2)
+
+        while(n):
+            fast = fast.next
+            n -= 1
+
+        while fast:
+            if(fast == slow ):
+                return fast
+            fast = fast.next
+            slow = slow.next
