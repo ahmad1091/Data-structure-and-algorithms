@@ -12,13 +12,22 @@
 
 # Solution 1:
 class Solution:
-    def hasCycle(self, head: Optional[ListNode]) -> bool:
+    def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
         fast = head
         slow = head
         
-        while(fast and fast.next and fast.next.next):
+        while(fast and fast.next):
+            slow = slow.next
             fast = fast.next.next
             if(fast == slow):
-                return True
+                break
+
+        if fast == None or fast.next == None:
+            return None
+
+        slow = head
+        while(fast != slow):
             slow = slow.next
-            
+            fast = fast.next
+
+        return fast
