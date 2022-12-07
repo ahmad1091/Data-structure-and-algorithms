@@ -9,6 +9,7 @@
 #         self.val = x
 #         self.next = None
 
+# Solution 1:
 class Solution:
     def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
         if headA == None 
@@ -26,19 +27,24 @@ class Solution:
             count2 += 1
             temp2 = temp2.next
         
-        if(temp1 != temp2):
+        if temp1 != temp2:
             return None
 
         fast = headA if count1 >= count2 else headB
         slow = headA if count1 < count2 else headB
         n = abs(count1 - count2)
 
-        while(n):
+        while n:
             fast = fast.next
             n -= 1
 
         while fast:
-            if(fast == slow ):
+            if fast == slow:
                 return fast
             fast = fast.next
             slow = slow.next
+
+# Solution 2:
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> Optional[ListNode]:
+        
