@@ -17,7 +17,7 @@ class Solution:
         fast = head
         slow = head
         
-        while(fast != None and fast.next != None and fast.next.next != None):
+        while(fast and fast.next and fast.next.next):
             fast = fast.next.next
             if(fast == slow):
                 return True
