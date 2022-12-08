@@ -8,12 +8,29 @@
 
 # Notice that you may not slant the container.
 
+# Solution 1: Brute Force
 class Solution:
     def maxArea(self, height: List[int]) -> int:
         maxSpace = 0
         for i in range(len(height)):
-            for j in range(len(height)):
-                space = min(height[i],height[j]) * abs(i-j)
+            for j in range(i+1,len(height)):
+                space = min(height[i],height[j]) * (j-i)
                 maxSpace = space if space > maxSpace else maxSpace
+
+        return maxSpace
+
+# Solution 2:
+
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        l, r = 0, len(height)-1
+        maxSpace = 0
+        while(l<r):
+            space = min(height[r],height[l]) * (r-l)
+            maxSpace = max(maxSpace,space)
+            if height[l] <= height[r]:
+                l += 1
+            elif  height[l]>height[r]:
+                r -= 1
 
         return maxSpace
