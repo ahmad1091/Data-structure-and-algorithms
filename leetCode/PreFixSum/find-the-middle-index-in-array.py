@@ -22,4 +22,16 @@ class Solution:
             if sum [i] - nums[i] == sum[n-1] - sum[i]:
                 return i
         return -1
+        
+# solution 2:same as before but cleaner:
+class Solution:
+    def findMiddleIndex(self, nums: List[int]) -> int:
+        n = len(nums)
+        total  = sum(nums)
+        current = 0
+        for i in range(n):
+            current += nums[i]
 
+            if current - nums[i] == total - current:
+                return i
+        return -1
