@@ -11,7 +11,7 @@ class Solution:
             k -= (1 - nums[r])
 
             if k < 0:
-                k += (1 - nums[r])
+                k += (1 - nums[l])
                 l += 1
 
             res = max(res, r - l +1)
