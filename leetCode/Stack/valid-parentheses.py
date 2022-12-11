@@ -14,11 +14,11 @@ class Solution:
         stack = [] 
         for i, x in enumerate(s):
             if x not in opens:
-                if len(stack) > 0 and opens[stack.pop()] == x:
+                if stack and opens[stack.pop()] == x:
                     continue
                 else:
                     return False
             else:
                 stack.append(x)
             
-        return len(stack) == 0
+        return not stack
