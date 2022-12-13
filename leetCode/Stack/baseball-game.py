@@ -16,6 +16,7 @@
 
 # The test cases are generated such that the answer and all intermediate calculations fit in a 32-bit integer and that all operations are valid.
 
+#  sol1:
 class Solution:
     def operate(self, op: str, arr: List[int]) -> List[int]:
         match op:
@@ -32,5 +33,26 @@ class Solution:
         arr =[]
         for x in operations:
             self.operate(x,arr)
+    
+        return sum(arr)
+# sol 2: more optimal
+class Solution:
+    def operate(self, op: str, arr: List[int]) -> List[int]:
+        match op:
+            case '+':
+                return arr[-1] + arr[-2]
+            case 'D':
+                return 2 * arr[-1]
+            case 'C':
+                return arr.pop() and None
+            case _:
+                return int(op)
+
+    def calPoints(self, operations: List[str]) -> int:
+        arr =[]
+        for x in operations:
+            val = self.operate(x,arr)
+            if val:
+                arr.append(val)
     
         return sum(arr)
