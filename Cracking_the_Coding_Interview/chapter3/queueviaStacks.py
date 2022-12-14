@@ -15,7 +15,7 @@ class MyQueue:
     def shiftStacks(self):
         if len(self.stackOldest) == 0:
             while(self.stackNewest):
-                self.stackOldest.append(stackNewest.pop())
+                self.stackOldest.append(self.stackNewest.pop())
 
     def peek(self):
         self.shiftStacks()
