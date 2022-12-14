@@ -44,6 +44,29 @@ class StackWithMin2(Stack):
         if(self.s2.isEmpty()): return float('inf')
         return self.s2.peek()
 
+#  Sol 2:
+class MinStack:
+    min = [float('inf')]
+
+    def __init__(self):
+        self.s = []
+        self.min = []
+
+    def push(self, val: int) -> None:
+        self.s.append(val)
+        val = min(val,self.min[-1] if self.min else val)
+        self.min.append(val)
+
+    def pop(self) -> None:
+        self.s.pop()
+        self.min.pop()
+
+    def top(self) -> int:
+        return self.s[-1]
+    
+    def getMin(self) -> int:
+        return self.min[-1]
+
     
 
 
