@@ -18,7 +18,33 @@ class StackWithMin(Stack,NodeWithMin):
     def min:
         if self.isEmpty: return int('inf')
         else:
-            super(Peri, self).display()peek().min
+            super(NodeWithMin, self).display()peek().min
+        
+
+class StackWithMin2(Stack):
+
+    def __init__(self) {
+        self.s2 = new Stack()
+
+    def push(self, value):
+        if value <= min():
+            s2.push(value)
+        super(Stack,self).push(value)
+
+    def pop(self):
+        value = super(Stack,self).pop()
+
+        if value == min:
+            s2.pop()
+        
+        return value
+
+
+    def min(self):
+        if(self.s2.isEmpty()): return float('inf')
+        return self.s2.peek()
+
+    
 
 
 
