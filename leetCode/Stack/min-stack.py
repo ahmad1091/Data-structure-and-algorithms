@@ -12,7 +12,7 @@
 # You must implement a solution with O(1) time complexity for each function.
 
 class MinStack:
-    min = [float('inf')]
+    min = []
 
     def __init__(self):
         self.s = []
