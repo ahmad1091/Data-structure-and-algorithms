@@ -12,7 +12,7 @@ class MyQueue:
     def add(self,val):
         self.stackNewest.append(val)
 
-    def add(self):
+    def shiftStacks(self):
         if len(self.stackOldest) == 0:
             while(self.stackNewest):
                 self.stackOldest.append(stackNewest.pop())
