@@ -13,3 +13,11 @@ class Solution:
         if n <= 1:
             return n
         return self.fib(n-1) + self.fib(n-2)
+
+# sol 2: DP
+class Solution:
+    def fib(self, n: int) -> int:
+        a, b = 0, 1
+        for _ in range(n):
+            a, b = b, a + b
+        return a
