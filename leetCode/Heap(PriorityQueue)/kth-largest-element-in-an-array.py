@@ -34,7 +34,7 @@ class Solution:
 
         return quickSelect(0, len(nums) - 1)
 
-# sol 3: priority queue
+# sol 3: priority queue O(nlogn)
 
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
