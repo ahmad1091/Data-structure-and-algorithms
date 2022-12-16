@@ -17,11 +17,12 @@ class FreqStack:
         self.mx = 0
 
     def push(self, val: int) -> None:
-        self.count[val] =  self.count.get(val, 0) + 1
-        arr = self.bucket.get(self.count[val],[])
-        arr.append(val)
-        self.bucket[self.count[val]] = arr
-        self.mx = max(self.mx, self.count[val])
+        counter = self.count.get(val, 0) + 1
+        self.count[val] =  counter
+        if counter > self.mx:
+           self.mx = counter 
+           self.bucket[counter] = [] 
+        self.bucket[counter].append(val)
 
     def pop(self) -> int:
         val = self.bucket[self.mx].pop()
