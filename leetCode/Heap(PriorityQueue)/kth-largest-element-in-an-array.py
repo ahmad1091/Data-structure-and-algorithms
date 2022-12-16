@@ -14,7 +14,7 @@ class Solution:
         return nums[-k]
 
 
-# sol 2: using quickSelect
+# sol 2: using quickSelect O(n)
 
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
@@ -33,3 +33,17 @@ class Solution:
             else:       return nums[p]
 
         return quickSelect(0, len(nums) - 1)
+
+# sol 3: priority queue
+
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        pq = []
+        heapq.heapify(pq)
+    
+        for i in range(len(nums)):
+            heapq.heappush(pq, nums[i])
+            if (len(pq) > k):
+                heapq.heappop(pq)
+
+        return pq[0]
