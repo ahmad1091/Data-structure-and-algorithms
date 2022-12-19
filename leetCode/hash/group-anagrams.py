@@ -19,7 +19,7 @@ class Solution:
         
         return hashStr.values()
 
-# Sol 1: O(m*n)
+# Sol 2: O(m*n)
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         hashStr = {}
@@ -33,4 +33,20 @@ class Solution:
             temp.append(s)
             hashStr[tuple(count)] = temp
         
+        return hashStr.values()
+    
+# Sol 3: O(m*n) cleaning
+
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        hashStr = defaultdict(list)
+
+        for s in strs:
+            count = [0] * 26
+
+            for c in s:
+                count[ord(c) - ord('c')] += 1
+
+            hashStr[tuple(count)].append(s)
+
         return hashStr.values()
