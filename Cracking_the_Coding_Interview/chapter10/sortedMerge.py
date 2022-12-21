@@ -37,7 +37,7 @@ def merge(a,b):
 
         mergeIdx -= 1
 
-a = array.array([2,2,4,5,6])
+a = [2,2,4,5,6]
 b = [0,1,1,2]
 
 merge(a,b)
