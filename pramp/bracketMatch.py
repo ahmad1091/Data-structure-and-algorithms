@@ -21,3 +21,20 @@ def bracket_match(text):
       countC += 1
           
   return countO + countC
+
+# sol 2:
+  function bracketMatch(text):
+    diffCounter = 0
+    ans = 0
+    n = text.length
+
+    for i from 0 to n-1:
+        if ( text[i] == '(' ):
+            diffCounter += 1
+        else if ( text[i] == ')' ):
+            diffCounter -= 1
+        if ( diffCounter < 0 ):
+            diffCounter += 1
+            ans += 1
+
+    return ans + diffCounter
