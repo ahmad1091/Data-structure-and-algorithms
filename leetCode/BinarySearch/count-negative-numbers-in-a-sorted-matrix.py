@@ -7,7 +7,7 @@ class Solution:
         n, m = len(grid[0]), len(grid)
         x, y = 0, m - 1
         res = 0
-        while x < m and y >= 0:
+        while x < n and y >= 0:
             if grid[y][x] < 0:
                 res += n - x
                 y -= 1
