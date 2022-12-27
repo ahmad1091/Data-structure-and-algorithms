@@ -4,6 +4,7 @@
 
 # Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 
+# sol 1: Top-Down Dynamic Programming "Memoization"
 class Solution:
     def climbStairs(self, n: int) -> int:
         if n <= 2:return n
@@ -16,7 +17,7 @@ class Solution:
         print(dp)
         return dp[0]
 
-# sol 2: More clean sol
+# sol 2: Top-Down Dynamic Programming "Memoization" cleaner Code
 class Solution:
     def climbStairs(self, n: int) -> int:
         a = b = 1
@@ -25,3 +26,16 @@ class Solution:
             a, b = a + b, a
 
         return a
+
+# sol 3: Bottom-Up Dynamic Programming
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        def climbStairs(i, memo:list[int]):
+            if i <= 2: return i
+
+            if memo[i] == 0:
+                memo[i] = climbStairs(i - 1, memo) + climbStairs(i - 2, memo)
+
+            return memo[i]
+
+        return climbStairs(n, [0]*(n+1))
