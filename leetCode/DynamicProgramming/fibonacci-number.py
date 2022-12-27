@@ -14,10 +14,23 @@ class Solution:
             return n
         return self.fib(n-1) + self.fib(n-2)
 
-# sol 2: DP
+# sol 2: loop
 class Solution:
     def fib(self, n: int) -> int:
         a, b = 0, 1
         for _ in range(n):
             a, b = b, a + b
         return a
+
+# sol 3: Dynamic Programming "Memoization"
+class Solution:
+    def fib(self, n: int) -> int:
+        def fib(i,memo:List[int]):
+            if i <= 1: return i
+
+            if memo[i] == 0:
+                memo[i] = fib(i - 1, memo) + fib(i - 2, memo)
+
+            return memo[i]
+
+        return fib(n, [0]*(n+1))
