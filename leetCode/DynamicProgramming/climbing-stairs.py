@@ -15,3 +15,13 @@ class Solution:
 
         print(dp)
         return dp[0]
+
+# sol 2: More clean sol
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        a = b = 1
+   
+        for i in range(n-1):
+            a, b = a + b, a
+
+        return a
