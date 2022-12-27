@@ -7,14 +7,14 @@
 # F(n) = F(n - 1) + F(n - 2), for n > 1.
 # Given n, calculate F(n).
 
-# sol 1: Recursion
+# sol 1: Recursion // Worse performance
 class Solution:
     def fib(self, n: int) -> int:
         if n <= 1:
             return n
         return self.fib(n-1) + self.fib(n-2)
 
-# sol 2: loop
+# sol 2: loop // Best performance
 class Solution:
     def fib(self, n: int) -> int:
         a, b = 0, 1
@@ -22,7 +22,7 @@ class Solution:
             a, b = b, a + b
         return a
 
-# sol 3: Dynamic Programming "Memoization"
+# sol 3: Dynamic Programming "Memoization" // Optimized solution performance
 class Solution:
     def fib(self, n: int) -> int:
         def fib(i,memo:List[int]):
