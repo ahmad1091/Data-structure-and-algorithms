@@ -22,7 +22,7 @@ class Solution:
             a, b = b, a + b
         return a
 
-# sol 3: Dynamic Programming "Memoization" // Optimized solution performance from Recursion Sol
+# sol 3: Top-Down Dynamic Programming "Memoization" // Optimized solution performance from Recursion Sol
 class Solution:
     def fib(self, n: int) -> int:
         def fib(i,memo:List[int]):
@@ -34,3 +34,16 @@ class Solution:
             return memo[i]
 
         return fib(n, [0]*(n+1))
+
+# sol 3: Bottom-Up Dynamic Programming // Optimized solution performance from Recursion Sol
+class Solution:
+    def fib(self, n: int) -> int:
+        if n <= 1:return n
+        memo = [0] * n
+        memo[0] = 0
+        memo[1] = 1
+
+        for i in range(2,n):
+            memo[i] = memo[i - 1] + memo[i -2]
+        
+        return memo[n -1] + memo[i - 2]
