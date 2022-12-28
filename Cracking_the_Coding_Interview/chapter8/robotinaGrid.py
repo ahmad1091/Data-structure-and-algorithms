@@ -3,25 +3,24 @@
 # the robot cannot step on them. Design an algorithm to find a path for the robot from the top left to
 # the bottom right.
 
-def pathWithObstacles(obstacleGrid: list[list]):
-    m = len(obstacleGrid)
-    n = len(obstacleGrid[0])
-    res = []
+class Solution:
+    def pathWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        n = len(obstacleGrid[0])
+        m = len(obstacleGrid)
+        dp = [[0 for _ in range(n)] for _ in range(m)]
 
-    def dfs(i:int, j:int) -> bool:
-        if i == m | j == n | obstacleGrid[i][j] == 1:
-            return False
+        for c in range(n):
+            if obstacleGrid[0][c] == 1: break
+            dp[0][c] = 1
 
-        res.append([i, j])
-        obstacleGrid[i][j] = 1
-        
-        if (i + 1 == m & j + 1 == n) | dfs(i + 1, j) | dfs(i, j + 1):
-            return True
+        for r in range(m):
+            if obstacleGrid[r][0] == 1: break
+            dp[r][0] = 1
 
-        res.pop()
-        return  False
+        for i in range(1, m):
+            for j in range(1, n):
+                if  obstacleGrid[i][j] == 1: continue
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1]
 
-    if dfs(0,0):
-        return True
-    
-    return []
+        return dp[-1][-1]
+
