@@ -10,3 +10,16 @@ def magicSlow(arr: list[int]) -> int:
     
     return -1
 
+# Sol 2: BST
+def magicFast(array: list[int]) -> int:
+    def magicFast(array: list[int], start: int, end: int) -> int:
+        if end < start: return -1
+        mid = (start + end) // 2
+        if (array[mid] == mid):
+            return mid
+        elif (array[mid] > mid):
+            return magicFast(array, start, mid - 1)
+        else:
+            ret urn magicFast(array, mid + 1, end)
+
+    return magicFast(array)
