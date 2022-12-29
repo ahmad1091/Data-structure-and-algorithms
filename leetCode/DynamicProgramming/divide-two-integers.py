@@ -22,3 +22,22 @@ class Solution:
             count = - count
 
         return count 
+
+# Sol 2:
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
+        d = abs(dividend)
+        dv = abs(divisor)
+        count = 0
+
+        while(d >= dv):
+            mul = 1
+            temp = dv
+            while d >= temp:
+                d -= temp
+                count += mul
+                mul += mul
+                temp += temp
+
+        if divisor < 0 and dividend >= 0 or divisor > 0 and dividend <= 0:
+            count = - count
