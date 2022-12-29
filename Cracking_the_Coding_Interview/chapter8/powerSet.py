@@ -24,23 +24,26 @@ class Solution:
 
         return subsets(nums, 0)
 
-
+# Solution #2: Combinatorics
 class Solution:
+    def convertItToSet(self, x: int, arr: list[int]):
+        subset = []
+        idx = 0
+
+        for k in range(x - 1, 0, -1):
+            if (k & 1) == 1:
+                subset.append(arr[idx]) 
+            idx += 1
+            
+        return subset
     def subsets(self, nums: List[int]) -> List[List[int]]:
         allsubsets = []
-        subset = []
-        def dfs(i: int) -> List[List[int]]:
-            if len(nums) <= i:
-                allsubsets.append(subset.copy()) 
-                return
+        max = 1 << len(nums)
 
-            subset.append(nums[i])
-            dfs(i + 1)
+        for k in range(max):
+            subset = self.convertItToSet(k, nums)
+            allsubsets.append(subset)
 
-            subset.pop()
-            dfs(i + 1)
-        
-        dfs(0)
         return allsubsets
 
             
