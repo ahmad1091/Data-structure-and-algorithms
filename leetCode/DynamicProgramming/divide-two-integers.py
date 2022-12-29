@@ -41,3 +41,5 @@ class Solution:
 
         if divisor < 0 and dividend >= 0 or divisor > 0 and dividend <= 0:
             count = - count
+
+        return min(2147483647,count) 
