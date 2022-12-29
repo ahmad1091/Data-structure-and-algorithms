@@ -18,4 +18,9 @@ class Solution:
                 x -= 1
 
         return x
+
+# sol 2: one line
+class Solution:
+    def finalValueAfterOperations(self, operations: List[str]) -> int:
+        return sum(1 if s[1] == '+' else -1 for s in operations)
             
