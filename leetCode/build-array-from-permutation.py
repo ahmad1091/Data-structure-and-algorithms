@@ -11,3 +11,8 @@ class Solution:
             res[i] = nums[n]
         
         return res
+
+# sol 2:
+class Solution:
+    def buildArray(self, nums: List[int]) -> List[int]:
+        return [nums[num] for num in nums]
