@@ -6,3 +6,14 @@
 # (2) A disk is slid off the top of one tower onto another tower.
 # (3) A disk cannot be placed on top of a smaller disk.
 # Write a program to move the disks from the first tower to the last using stacks.
+
+def moveDisks(n, source, destination, buffer):
+    if n == 1:
+        print ("Move disk 1 from source",source,"to destination",destination)
+        return
+    moveDisks(n - 1, source, buffer, destination)
+    print ("Move disk",n,"from source",source,"to destination",destination)
+    moveDisks(n - 1, buffer, destination, source)
+
+n = 4
+moveDisks(n,'A','B','C')
