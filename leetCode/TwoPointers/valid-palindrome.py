@@ -12,3 +12,19 @@ class Solution:
                 modified += l.lower()
         return modified == modified[::-1]
 
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        def toChar(s: str) -> str:
+            res = ''
+            for c in s.lower():
+                if c.isalpha() or c.isnumeric():
+                    res += c
+            return res     
+
+        def isPal(s: str) -> bool:
+            if len(s) <= 1:
+                return True
+            else:
+                return s[0] == s[-1] and isPal(s[1:-1])
+
+        return isPal(toChar(s))
