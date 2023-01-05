@@ -15,3 +15,12 @@ class Solution:
             res.append(sortedItems[i][0])
 
         return res
+
+# sol 2: cleaner solution
+
+class Solution:
+    def topKFrequent(self, words: List[str], k: int) -> List[str]:
+
+        count = Counter(words)
+        sortedItems = sorted(count, key = lambda x: (-count[x],x))
+        return sortedItems[:k]
