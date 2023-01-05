@@ -21,3 +21,42 @@
         prev = f
 
     return res
+
+# sol 2: Trie Solution
+class Trie:
+    def __init__(self):
+        self.children = {}
+        self.is_end = False
+
+    def insert(self, w):
+        node = self
+        ps = w.split('/')
+        for p in ps[1:]:
+            if p not in node.children:
+                node.children[p] = Trie()
+            node = node.children[p]
+        node.is_end = True
+
+    def search(self, w):
+        node = self
+        ps = w.split('/')
+        for p in ps[1:]:
+            if p not in node.children:
+                return False
+            node = node.children[p]
+            if node.is_end:
+                return True
+        return False
+    
+class Solution:
+  def removeSubfolders(self, folder: List[str]) -> List[str]:
+    res = []
+    trie = Trie()
+
+    folder.sort()
+    
+    for f in folder:
+        if not trie.search(f):
+            trie.insert(f)
+            res.append(f)
+    return res
