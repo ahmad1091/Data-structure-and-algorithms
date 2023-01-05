@@ -21,7 +21,7 @@ class Solution:
 
         return res
 
-# sol 2: 
+# sol 2: cleaner
 class Solution:
     def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
         products.sort()
@@ -43,3 +43,38 @@ class Solution:
                 res[-1].append(products[l + j])
             
         return res
+
+# sol 3: Trie Solution 
+class Trie:
+    def __init__(self):
+        self.children = {}
+        self.v = []
+
+    def insert(self, word, i):
+        node = self
+        for c in word:
+            if c not in node.children:
+                node.children[c] = Trie()
+            node = node.children[c]
+            node.v.append(i)
+
+    def search(self, word):
+        res = [[] for _ in range(len(word))]
+        node = self
+        for i, c in enumerate(word):
+            if c not in node.children:
+                break
+            node = node.children[c]
+            res[i] = node.v[:3]
+        return res
+
+
+class Solution:
+    def suggestedProducts(self, products: List[str], searchWord: str) -> List[List[str]]:
+        products.sort()
+        trie = Trie()
+        for i, w in enumerate(products):
+            trie.insert(w, i)
+        res = trie.search(searchWord)
+        return [[products[j] for j in v] for v in res ]
+
