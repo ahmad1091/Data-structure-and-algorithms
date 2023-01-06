@@ -10,6 +10,8 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+
+# sol 1: max dfs
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         def dfs(root):
@@ -18,6 +20,13 @@ class Solution:
             return  max (dfs(root.left) + 1, dfs(root.right) + 1)
 
         return dfs(root)
+
+# sol 2: max dfs cleaner code
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+        return  1 + max (self.maxDepth(root.left), self.maxDepth(root.right))
         
             
         
