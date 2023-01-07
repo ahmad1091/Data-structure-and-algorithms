@@ -3,18 +3,22 @@
 # nil in the surrounding area until the color changes from the original color.
 
 
-def paintFill(screen, r, c, ncolor):
-    if screen[][] == ncolor: return False
-    return paintFill(screen, r, c, screen[r][c], ncolor)
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        def paint_fill(screen: List[List[int]], i: int, j: int, old_color: int, new_color: int):
+            if (i < 0 or j < 0   or 
+                i >= len(screen) or
+                j >= len(screen[0])
+            ):
+                return image
+            if screen[i][j] == old_color:
+                screen[i][j] = new_color
+                paint_fill(screen, i + 1, j, old_color, new_color)
+                paint_fill(screen, i - 1, j, old_color, new_color)
+                paint_fill(screen, i, j + 1, old_color, new_color)
+                paint_fill(screen, i, j - 1, old_color, new_color)
 
-    def paintFill(screen, r, c, ocolor, ncolor):
-        if r < 0 or c < 0 or c >= screen[0].length or r >= screen[0].length:
-            return False
-        if screen[r][c] == ocolor:
-           screen[r][c] = ncolor 
-           paintFill(screen, r - 1, c, ocolor, ncolor)
-           paintFill(screen, r + 1, c, ocolor, ncolor)
-           paintFill(screen, r, c + 1, ocolor, ncolor)
-           paintFill(screen, r, c - 1, ocolor, ncolor)
-        
-        return True
+            return image
+
+        if image[sr][sc] == color: return image
+        return paint_fill(image, sr, sc, image[sr][sc], color)
