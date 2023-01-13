@@ -23,4 +23,21 @@ class Solution:
 
         return res
 
+# sol 2: using dfs
+class Solution:
+    def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
+        res = deepest = 0
+        def dfs(root,level):
+            nonlocal res, deepest
+            if not root: return 
+            if deepest == level:
+                res += root.val
+            elif level > deepest:
+                deepest = level
+                res = root.val
+            dfs(root.left, level + 1)
+            dfs(root.right, level + 1)
+        dfs(root, 0)
+        return res
+
                 
