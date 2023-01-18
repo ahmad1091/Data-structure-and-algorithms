@@ -6,6 +6,7 @@
 
 # Given an array rooms where rooms[i] is the set of keys that you can obtain if you visited room i, return true if you can visit all the rooms, or false otherwise.
 
+# sol 1: dfs
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
         visited = set()
@@ -18,3 +19,19 @@ class Solution:
                 dfs(r)
         dfs(0)
         return len(rooms) == len(visited)
+
+
+# sol 2: bfs 
+class Solution:
+    def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
+        key_q = deque([0])
+        visited = set(key_q)
+
+        while key_q:
+            key = key_q.popleft()
+            for room in rooms[key]:
+                if room not in visited:
+                    key_q.append(room)
+                    visited.add(room)
+
+        return len(visited) == len(rooms)
