@@ -33,8 +33,8 @@ class Solution:
             res -= union(n1, n2)
         return res
 
-        # sol 2:
-        class Solution:
+# sol 2:
+class Solution:
     def countComponents(self, n: int, edges: List[List[int]]) -> int:
         def find(x):
             if p[x] != x:
