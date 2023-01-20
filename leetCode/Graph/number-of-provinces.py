@@ -23,3 +23,23 @@ class Solution:
                 if isConnected[i][j]:
                     par[find(i)] = find(j)
         return sum([i == v for i, v in enumerate(par)])
+
+sol 2: dfs 
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        n = len(isConnected)
+        visit = set()
+        res = 0
+        
+        def dfs(x):
+            visit.add(x)
+            for j in range(n):
+                if j not in visit and isConnected[x][j]:
+                    dfs(j)
+
+        for x in range(n):
+            if x not in visit:
+                dfs(x)
+                res += 1 
+
+        return res
