@@ -23,3 +23,33 @@ class Solution:
 
         n = len(arr)
         return max([arr[i] + arr[n - i - 1] for i in range(n)])
+
+# sol 2: more optimal
+class Solution:
+    def pairSum(self, head: Optional[ListNode]) -> int:
+        def reverse(head):
+            dummy = ListNode()
+            cur = head
+            while cur:
+                nxt = cur.next
+                cur.next = dummy.next
+                dummy.next = cur
+                cur = nxt
+            return dummy.next
+
+        slow, fast = head, head.next
+        while fast and fast.next:
+            slow, fast = slow.next, fast.next.next
+        
+        first = head
+        q = slow.next
+        slow.next = None
+        second = reverse(q)
+        res = 0
+
+        while second and first:
+            res = max(res, second.val + first.val)
+            first = first.next
+            second = second.next
+        
+        return res
