@@ -19,3 +19,27 @@ class Solution:
         string = ''.join(str(x) for x in testList)
         testList.reverse()
         return string == ''.join(str(x) for x in testList)
+
+# slo 2: using arr
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        slow = head 
+        fast = head
+
+        arr = [] 
+        while(fast != None and fast.next != None):
+            arr.append(slow.val)
+            slow = slow.next
+            fast = fast.next.next
+
+        if (fast != None):
+            slow = slow.next
+
+        while slow:
+            top = arr.pop()
+
+            if(top != slow.val):
+                return False
+            slow = slow.next
+        
+        return True
