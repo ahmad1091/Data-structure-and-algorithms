@@ -43,3 +43,26 @@ class Solution:
             slow = slow.next
         
         return True
+
+# sol 3: reverse whole LinkedList
+class Solution:
+    def reverseAndClone(self, head: Optional[ListNode]) -> [ListNode]:
+        node = None
+        while(head):
+            n = ListNode(head.val)
+            n.next = node
+            node = n
+            head = head.next
+        return node
+
+    def isEqual(self,one : [ListNode],two:[ListNode]) -> bool:
+        while (one and two):
+            if one.val != two.val:
+                return False
+            one = one.next
+            two = two.next
+        return one == None and two == None
+
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        reversed = self.reverseAndClone(head)
+        return self.isEqual(head, reversed)
