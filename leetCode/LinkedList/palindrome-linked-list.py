@@ -66,3 +66,31 @@ class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
         reversed = self.reverseAndClone(head)
         return self.isEqual(head, reversed)
+
+# sol 4: reverse half linkedList
+class Solution:
+    def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        def reverse(head):
+            dummy = ListNode()
+            cur = head
+            while cur:
+                nxt = cur.next
+                cur.next = dummy.next
+                dummy.next = cur
+                cur = nxt
+            return dummy.next
+
+        slow, fast = head, head.next
+        while fast and fast.next:
+            slow, fast = slow.next, fast.next.next
+        
+        first = head
+        q = slow.next
+        slow.next = None
+        second = reverse(q)
+        
+        while second and first:
+            if(second.val != first.val):return False
+            first = first.next
+            second = second.next
+        return True
