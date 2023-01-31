@@ -27,3 +27,57 @@ class Solution:
                 ans.append((sortedArr[k // 2] + sortedArr[k // 2 - 1]) / 2)
 
         return ans
+
+# sol 2: optimal 
+class Solution:
+    def medianSlidingWindow(self, nums: List[int], k: int) -> List[float]:
+        res = []
+        min_pq = []
+        max_pq = []
+
+        def getMedian():
+            if not min_pq and not max_pq: return 0
+            if len(min_pq) != len(max_pq):
+                return min_pq[0]
+            else:
+                return (min_pq[0] - max_pq[0]) / 2
+
+        def balancePQ():
+            if len(max_pq) > len(min_pq):
+                heapq.heappush(min_pq, -heapq.heappop(max_pq))
+            if len(min_pq) - len(max_pq) > 1:
+                heapq.heappush(max_pq, -heapq.heappop(min_pq))
+
+        def insert(num):
+            median = getMedian()
+
+            if num >= median:
+                heapq.heappush(min_pq, num)
+            else:
+                heapq.heappush(max_pq, -num)
+
+            balancePQ()
+
+        def remove(num):
+            median = getMedian()
+
+            if num >= median:
+                min_pq.remove(num)
+                heapq.heapify(min_pq)
+            else:
+                max_pq.remove(-num)
+                heapq.heapify(max_pq)
+
+            balancePQ()
+
+        for i in range(len(nums)):
+            insert(nums[i])
+
+            if i >= k:
+                remove(nums[i - k])
+            if i >= k - 1:
+                res.append(getMedian())
+
+        return res
+
+            
