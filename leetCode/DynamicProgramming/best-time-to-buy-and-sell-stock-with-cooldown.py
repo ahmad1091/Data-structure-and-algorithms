@@ -25,3 +25,11 @@ class Solution:
             return dp[(i, buying)]
         
         return dfs(0, True)
+
+# sol 2:
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        f1, f2, f3 = -prices[0], 0, 0
+        for p in prices[1:]:
+            f1, f2, f3 = max(f1, f3 - p), max(f2, f1 + p), max(f3, f2)
+        return f2
