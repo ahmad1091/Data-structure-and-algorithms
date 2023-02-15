@@ -24,3 +24,8 @@ class Solution:
                 if c != 'L': consecutive = 0
                 else: consecutive += 1
         return True
+
+# sol 2:
+class Solution:
+    def checkRecord(self, s: str) -> bool:
+        return s.count('A') < 2 and 'LLL' not in s
