@@ -7,7 +7,7 @@
 # Return the final string after all such duplicate removals have been made. It is guaranteed that the answer is unique.
 
 
-sol :
+# sol :
 class Solution:
     def removeDuplicates(self, s: str, k: int) -> str:
         charCount = Counter(s)
@@ -26,4 +26,23 @@ class Solution:
                 res += c
         
         return res
+
+sol 2:
+class Solution:
+    def removeDuplicates(self, s: str, k: int) -> str:
+        stack = []
+        for c in s:
+            if not stack or stack[-1][0] != c:
+                stack.append([c, 1])
+            else:
+                stack[-1][1] += 1
+                if stack[-1][1] == k:
+                    stack.pop()
+        
+        res = ''
+        for c, count in stack:
+            res += c * count
+        
+        return res
+                
                 
