@@ -28,4 +28,18 @@ class Solution:
                 res.append(cur)
             seen.add(cur)
         return res
+
+# or:
+class Solution:
+    def findRepeatedDnaSequences(self, s: str) -> List[str]:
+        cnt = {}
+        res = []
+
+        for i in range(len(s) - 9):
+            cur = s[i:i + 10]
+            cnt[cur] = 1 + cnt.get(cur, 0)
+            if cnt[cur] == 2:
+                res.append(cur)
+            
+        return res
             
