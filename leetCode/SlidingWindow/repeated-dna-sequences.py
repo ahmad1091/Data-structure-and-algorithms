@@ -42,4 +42,30 @@ class Solution:
                 res.append(cur)
             
         return res
+
+# sol 3: Hashing 
+class Solution:
+    def findRepeatedDnaSequences(self, s: str) -> List[str]:
+        if len(s) <= 10:
+            return set()
+        base = 4
+        hi_place_value = pow(base, 10)
+        mapping = {'A': 1, 'C': 2, 'G': 3, 'T': 4}
+        numbers = []
+        for i in range(len(s)):
+            numbers.append(mapping.get(s[i]))
+        hashing = 0
+        substring_hashes, output = set(), set()
+        for start in range(len(s) - 9):
+            if start != 0:
+                hashing = hashing * base - \
+                    numbers[start - 1] * hi_place_value + \
+                    numbers[start + 9]
+            else:
+                for end in range(10):
+                    hashing = hashing * base + numbers[end]
+            if hashing in substring_hashes:
+                output.add(s[start:start + 10])
+            substring_hashes.add(hashing)
+        return output
             
