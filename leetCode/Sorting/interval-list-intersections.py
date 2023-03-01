@@ -24,4 +24,36 @@
                 j += 1
             
         return res
-                
+            
+
+#  sol 2: oop
+class Interval:
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+        self.closed = True  # by default, the interval is closed
+
+    # set the flag for closed/open
+    def set_closed(self, closed):
+        self.closed = closed
+
+    def __str__(self):
+        return "[" + str(self.start) + ", " + str(self.end) + "]" if self.closed else "(" + str(self.start) + ", " + str(self.end) + ")"
+
+def intervals_intersection(interval_list_a, interval_list_b):
+    intersections = []
+    i = j = 0
+
+    while i < len(interval_list_a) and j < len(interval_list_b):
+        start = max(interval_list_a[i].start, interval_list_b[j].start)
+        end = min(interval_list_a[i].end, interval_list_b[j].end)
+
+        if start <= end:
+            intersections.append(Interval(start, end))
+            
+        if interval_list_a[i].end < interval_list_b[j].end:
+            i += 1
+        else:
+            j += 1
+
+    return intersections
