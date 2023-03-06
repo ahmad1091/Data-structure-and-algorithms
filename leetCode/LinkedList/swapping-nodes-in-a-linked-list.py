@@ -24,3 +24,24 @@ class Solution:
         first.val, second.val = second.val, first.val
 
         return head
+
+# sol 2:
+class Solution:
+    def swapNodes(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+        front = end = None
+        count = 0
+        cur = head
+        while cur:
+            count += 1
+
+            if end:
+                end = end.next
+            
+            if count == k:
+                front = cur
+                end = head
+
+            cur = cur.next
+        front.val, end.val = end.val, front.val
+
+        return head
