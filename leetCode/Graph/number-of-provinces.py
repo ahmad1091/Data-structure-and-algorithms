@@ -24,7 +24,7 @@ class Solution:
                     par[find(i)] = find(j)
         return sum([i == v for i, v in enumerate(par)])
 
-sol 2: dfs 
+# sol 2: dfs 
 class Solution:
     def findCircleNum(self, isConnected: List[List[int]]) -> int:
         n = len(isConnected)
@@ -43,3 +43,35 @@ class Solution:
                 res += 1 
 
         return res
+
+# sol 3 union-find:
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        N = len(isConnected)
+        par = list(range(N))
+        rank = [1] * N
+
+        def find(x):
+            while x != par[x]:
+                par[x] = par[par[x]]
+                x = par[x]
+            return x
+        
+        def union(i, j):
+            x, y = find(i), find(j)
+            if par[x] == par[y]:
+                return 0
+
+            if rank[x] > rank[y]:
+                par[y] = x
+            else:
+                par[x] = y
+            
+            return 1
+        ans = N
+        for i in range(N):
+            for j in range(i + 1, N):
+                if isConnected[i][j]:
+                    ans -= union(i, j)
+        return ans
+
