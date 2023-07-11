@@ -21,7 +21,7 @@ problem solving challenge
 - [Sorting](leetCode/Sorting)
 - [Stack](leetCode/Stack)
 - [String](leetCode/String)
-- [Topological Sort](leetCode/Topological Sort)
+- [TopologicalSort](leetCode/Topological Sort)
 - [Tree](leetCode/Tree)
 - [Trie](leetCode/Trie)
 - [TwoPointers](leetCode/TwoPointers)
