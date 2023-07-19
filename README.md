@@ -16,6 +16,7 @@ problem solving challenge
 - [Math](leetCode/Math)
 - [Matrix](leetCode/Matrix)
 - [PreFixSum](leetCode/PreFixSum)
+- [Queue](leetCode/Queue)
 - [Recursion](leetCode/Recursion)
 - [SlidingWindow](leetCode/SlidingWindow)
 - [Sorting](leetCode/Sorting)
